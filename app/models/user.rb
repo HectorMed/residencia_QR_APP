@@ -22,7 +22,14 @@ class User < ApplicationRecord
       end
     end
   
+    # def assign_default_role
+    #   self.add_role(:admin) if self.roles.blank?
+    # end
     def assign_default_role
-      self.add_role(:admin) if self.roles.blank?
+      if User.count == 1
+        self.add_role(:admin)
+      else
+        self.add_role(:institucional)
+      end
     end
 end
