@@ -1,14 +1,14 @@
-# Exported from Render on 2025-01-20T01:44:02Z
+# Exported from Render on 2025-01-20T14:28:27Z
 services:
 - type: web
-  name: uniaccess
+  name: residencia_QR_APP
   runtime: ruby
   repo: https://github.com/HectorMed/residencia_QR_APP
   plan: free
   envVars:
-  - key: RAILS_MASTER_KEY
-    sync: false
   - key: DATABASE_URL
+    sync: false
+  - key: RAILS_MASTER_KEY
     sync: false
   region: oregon
   buildCommand: ./bin/render-build.sh
