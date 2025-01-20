@@ -29,7 +29,7 @@ class User < ApplicationRecord
       if User.count == 1
         self.add_role(:admin)
       else
-        self.add_role(:institucional)
+        self.add_role(:institutional)
       end
     end
 end
