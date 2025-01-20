@@ -1,0 +1,331 @@
+<div class="text-white text-center p-3 md:text-right">
+<h2 class="text-lg p-4 font-light">Fecha del reporte generado: <span class="font-bold"><%= Date.current.strftime('%d/%m/%Y') %></span> .</h2>
+    <div class="p-3">
+        <%= form_tag stats_path, method: :get, class: '' do %>
+                <%= label_tag 'Fecha de inicio' %>
+                <%= text_field_tag 'start_date', params[:start_date], type: 'date', class: 'text-black rounded-md text-center' %>
+
+                <%= label_tag 'Fecha final' %>
+                <%= text_field_tag 'end_date', params[:end_date], type: 'date', class: 'text-black rounded-md text-center' %>
+        <% end %>
+    </div>
+
+        <div class="width-[80%] mx-auto bg-red-200 text-center">
+        <h2 class="font-bold text-lg p-4">Estadisticas Generales(Por genero).</h2>
+            <table class="text-center w-4/5 mx-auto p-4">
+                <thead>
+                    <tr class="border-solid border-2 border-black p-2">
+                        <th class="border-solid border-2 border-black p-2">
+                            Hombres
+                        </th>
+                        <th class="border-solid border-2 border-black p-2">
+                            Mujeres
+                        </th>
+                        <th class="border-solid border-2 border-black p-2">
+                            Total
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="border-solid border-2 border-black p-2">
+                        <td class="border-solid border-2 border-black p-2">
+                            <%= @filtered_records.where(gender: 'M').count %>
+                        </td>
+                        <td class="border-solid border-2 border-black p-2">
+                            <%= @filtered_records.where(gender: 'F').count %>
+                        </td>
+                        <td class="border-solid border-2 border-black p-2">
+                            <%= @filtered_records.count %>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 class="font-bold text-lg p-4">Estadisticas Generales(Por carrera).</h2>
+
+            <table class="text-center w-4/5 mx-auto p-4">
+                <thead>
+                    <tr class="border-solid border-2 border-black p-2">
+                        <th colspan="13" class="border-solid border-2 border-black p-2">
+                            Carreras
+                        </th>
+                    </tr>
+                    <tr class="border-solid border-2 border-black p-2">
+                        <th class="border-solid border-2 border-black p-2">
+                            Lic. en Admin.
+                        </th>
+                        <th class="border-solid border-2 border-black p-2">
+                            Ing. Ambiental
+                        </th>
+                        <th class="border-solid border-2 border-black p-2">
+                            Ing. Biomédica
+                        </th>
+                        <th class="border-solid border-2 border-black p-2">
+                            Ing. Bioquímica
+                        </th>
+                        <th class="border-solid border-2 border-black p-2">
+                           Ing. Civil 
+                        </th>
+                        <th class="border-solid border-2 border-black p-2">
+                            Ing. Eléctrica
+                        </th>
+                        <th class="border-solid border-2 border-black p-2">
+                            Ing. Electrónica
+                        </th>
+                        <th class="border-solid border-2 border-black p-2">
+                            Ing. Industrial
+                        </th>
+                        <th class="border-solid border-2 border-black p-2">
+                            Ing. Mecánica
+                        </th>
+                        <th class="border-solid border-2 border-black p-2">
+                            Ing. Química
+                        </th>
+                        <th class="border-solid border-2 border-black p-2">
+                            Ing. en Gestión Emp.
+                        </th>
+                        <th class="border-solid border-2 border-black p-2">
+                            Ing. en Sistemas Comp.
+                        </th>
+                        <th class="border-solid border-2 border-black p-2">
+                            Ing. en Semicond.
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="border-solid border-2 border-black p-2">
+                        <td class="border-solid border-2 border-black p-2">
+                            <%= @filtered_records.where(program: 'LADM10').count %>
+                        </td>
+                        <td class="border-solid border-2 border-black p-2">
+                            <%= @filtered_records.where(program: 'IAMB10').count %>
+                        </td>
+                        <td class="border-solid border-2 border-black p-2">
+                            <%= @filtered_records.where(program: 'IBIO10').count %>
+                        </td>
+                        <td class="border-solid border-2 border-black p-2">
+                            <%= @filtered_records.where(program: 'ICIV10').count %>
+                        </td>
+                        <td class="border-solid border-2 border-black p-2">
+                            <%= @filtered_records.where(program: 'IELE10').count %>
+                        </td>
+                        <td class="border-solid border-2 border-black p-2">
+                            <%= @filtered_records.where(program: 'IELC10').count %>
+                        </td>
+                        <td class="border-solid border-2 border-black p-2">
+                            <%= @filtered_records.where(program: 'IIND10').count %>
+                        </td>
+                        <td class="border-solid border-2 border-black p-2">
+                            <%= @filtered_records.where(program: 'IMEC10').count %>
+                        </td>
+                         <td class="border-solid border-2 border-black p-2">
+                            <%= @filtered_records.where(program: 'IQUI10').count %>
+                        </td>
+                        <td class="border-solid border-2 border-black p-2">
+                            <%= @filtered_records.where(program: 'IGEM10').count %>
+                        </td>
+                        <td class="border-solid border-2 border-black p-2">
+                            <%= @filtered_records.where(program: 'ISIC10').count %>
+                        </td>
+                        <td class="border-solid border-2 border-black p-2">
+                            <%= @filtered_records.where(program: 'ISIC10').count %>
+                        </td>
+                        <td class="border-solid border-2 border-black p-2">
+                            <%= @filtered_records.where(program: 'LADM10').count %>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 class="font-bold text-lg p-4">Estadisticas Especificas(Masculino).</h2>
+
+            <table class="text-center w-4/5 mx-auto p-4">
+                <thead>
+                    <tr class="border-solid border-2 border-black p-2">
+                        <th colspan="13" class="border-solid border-2 border-black p-2">
+                            Carreras
+                        </th>
+                    </tr>
+                    <tr class="border-solid border-2 border-black p-2">
+                        <th class="border-solid border-2 border-black p-2">
+                            Lic. en Admin.
+                        </th>
+                        <th class="border-solid border-2 border-black p-2">
+                            Ing. Ambiental
+                        </th>
+                        <th class="border-solid border-2 border-black p-2">
+                            Ing. Biomédica
+                        </th>
+                        <th class="border-solid border-2 border-black p-2">
+                            Ing. Bioquímica
+                        </th>
+                        <th class="border-solid border-2 border-black p-2">
+                           Ing. Civil 
+                        </th>
+                        <th class="border-solid border-2 border-black p-2">
+                            Ing. Eléctrica
+                        </th>
+                        <th class="border-solid border-2 border-black p-2">
+                            Ing. Electrónica
+                        </th>
+                        <th class="border-solid border-2 border-black p-2">
+                            Ing. Industrial
+                        </th>
+                        <th class="border-solid border-2 border-black p-2">
+                            Ing. Mecánica
+                        </th>
+                        <th class="border-solid border-2 border-black p-2">
+                            Ing. Química
+                        </th>
+                        <th class="border-solid border-2 border-black p-2">
+                            Ing. en Gestión Emp.
+                        </th>
+                        <th class="border-solid border-2 border-black p-2">
+                            Ing. en Sistemas Comp.
+                        </th>
+                        <th class="border-solid border-2 border-black p-2">
+                            Ing. en Semicond.
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="border-solid border-2 border-black p-2">
+                        <td class="border-solid border-2 border-black p-2">
+                            <%= @filtered_records.where(program: 'LADM10', gender: 'M').count %>
+                        </td>
+                        <td class="border-solid border-2 border-black p-2">
+                            <%= @filtered_records.where(program: 'IAMB10', gender: 'M').count %>
+                        </td>
+                        <td class="border-solid border-2 border-black p-2">
+                            <%= @filtered_records.where(program: 'IBIO10', gender: 'M').count %>
+                        </td>
+                        <td class="border-solid border-2 border-black p-2">
+                            <%= @filtered_records.where(program: 'ICIV10', gender: 'M').count %>
+                        </td>
+                        <td class="border-solid border-2 border-black p-2">
+                            <%= @filtered_records.where(program: 'IELE10', gender: 'M').count %>
+                        </td>
+                        <td class="border-solid border-2 border-black p-2">
+                            <%= @filtered_records.where(program: 'IELC10', gender: 'M').count %>
+                        </td>
+                        <td class="border-solid border-2 border-black p-2">
+                            <%= @filtered_records.where(program: 'IIND10', gender: 'M').count %>
+                        </td>
+                        <td class="border-solid border-2 border-black p-2">
+                            <%= @filtered_records.where(program: 'IMEC10', gender: 'M').count %>
+                        </td>
+                         <td class="border-solid border-2 border-black p-2">
+                            <%= @filtered_records.where(program: 'IQUI10', gender: 'M').count %>
+                        </td>
+                        <td class="border-solid border-2 border-black p-2">
+                            <%= @filtered_records.where(program: 'IGEM10', gender: 'M').count %>
+                        </td>
+                        <td class="border-solid border-2 border-black p-2">
+                            <%= @filtered_records.where(program: 'ISIC10', gender: 'M').count %>
+                        </td>
+                        <td class="border-solid border-2 border-black p-2">
+                            <%= @filtered_records.where(program: 'ISIC10', gender: 'M').count %>
+                        </td>
+                        <td class="border-solid border-2 border-black p-2">
+                            <%= @filtered_records.where(program: 'LADM10', gender: 'M').count %>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 class="font-bold text-lg p-4">Estadisticas Especificas(Femenino).</h2>
+
+            <table class="text-center w-4/5 mx-auto p-4">
+                <thead>
+                    <tr class="border-solid border-2 border-black p-2">
+                        <th colspan="13" class="border-solid border-2 border-black p-2">
+                            Carreras
+                        </th>
+                    </tr>
+                    <tr class="border-solid border-2 border-black p-2">
+                        <th class="border-solid border-2 border-black p-2">
+                            Lic. en Admin.
+                        </th>
+                        <th class="border-solid border-2 border-black p-2">
+                            Ing. Ambiental
+                        </th>
+                        <th class="border-solid border-2 border-black p-2">
+                            Ing. Biomédica
+                        </th>
+                        <th class="border-solid border-2 border-black p-2">
+                            Ing. Bioquímica
+                        </th>
+                        <th class="border-solid border-2 border-black p-2">
+                           Ing. Civil 
+                        </th>
+                        <th class="border-solid border-2 border-black p-2">
+                            Ing. Eléctrica
+                        </th>
+                        <th class="border-solid border-2 border-black p-2">
+                            Ing. Electrónica
+                        </th>
+                        <th class="border-solid border-2 border-black p-2">
+                            Ing. Industrial
+                        </th>
+                        <th class="border-solid border-2 border-black p-2">
+                            Ing. Mecánica
+                        </th>
+                        <th class="border-solid border-2 border-black p-2">
+                            Ing. Química
+                        </th>
+                        <th class="border-solid border-2 border-black p-2">
+                            Ing. en Gestión Emp.
+                        </th>
+                        <th class="border-solid border-2 border-black p-2">
+                            Ing. en Sistemas Comp.
+                        </th>
+                        <th class="border-solid border-2 border-black p-2">
+                            Ing. en Semicond.
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="border-solid border-2 border-black p-2">
+                        <td class="border-solid border-2 border-black p-2">
+                            <%= @filtered_records.where(program: 'LADM10', gender: 'F').count %>
+                        </td>
+                        <td class="border-solid border-2 border-black p-2">
+                            <%= @filtered_records.where(program: 'IAMB10', gender: 'F').count %>
+                        </td>
+                        <td class="border-solid border-2 border-black p-2">
+                            <%= @filtered_records.where(program: 'IBIO10', gender: 'F').count %>
+                        </td>
+                        <td class="border-solid border-2 border-black p-2">
+                            <%= @filtered_records.where(program: 'ICIV10', gender: 'F').count %>
+                        </td>
+                        <td class="border-solid border-2 border-black p-2">
+                            <%= @filtered_records.where(program: 'IELE10', gender: 'F').count %>
+                        </td>
+                        <td class="border-solid border-2 border-black p-2">
+                            <%= @filtered_records.where(program: 'IELC10', gender: 'F').count %>
+                        </td>
+                        <td class="border-solid border-2 border-black p-2">
+                            <%= @filtered_records.where(program: 'IIND10', gender: 'F').count %>
+                        </td>
+                        <td class="border-solid border-2 border-black p-2">
+                            <%= @filtered_records.where(program: 'IMEC10', gender: 'F').count %>
+                        </td>
+                         <td class="border-solid border-2 border-black p-2">
+                            <%= @filtered_records.where(program: 'IQUI10', gender: 'F').count %>
+                        </td>
+                        <td class="border-solid border-2 border-black p-2">
+                            <%= @filtered_records.where(program: 'IGEM10', gender: 'F').count %>
+                        </td>
+                        <td class="border-solid border-2 border-black p-2">
+                            <%= @filtered_records.where(program: 'ISIC10', gender: 'F').count %>
+                        </td>
+                        <td class="border-solid border-2 border-black p-2">
+                            <%= @filtered_records.where(program: 'ISIC10', gender: 'F').count %>
+                        </td>
+                        <td class="border-solid border-2 border-black p-2">
+                            <%= @filtered_records.where(program: 'LADM10', gender: 'F').count %>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+</div>

@@ -1,0 +1,78 @@
+<%= render 'shared/header' %>
+<div class="p-4 md:ml-0 lg:ml-64 h-screen">
+    <div class="max-w-screen-xl mx-auto w-full">
+        <div class="p-4 h-full">  
+            <div class="text-white text-center p-3 md:text-right">          
+                <%= form_with url: import_students_path ,multipart: true, class: 'overflow-hidden' do |form| %>
+                    <%= form.file_field :file, class: 'mb-2' %>
+                    <%= form.submit 'Subir CSV', class: 'inline-block w-[17rem] sm:w-[10rem] py-3 px-10 bg-[#00325F] mb-2 rounded-lg hover:text-black hover:bg-white cursor-pointer transition-all duration-500 text-center' %>
+                <% end %>
+
+                <%= link_to 'Descargar plantilla CSV', download_csv_path, class: 'inline-block py-3 px-10 bg-[#00325F] mb-2 rounded-lg hover:text-black hover:bg-white w-[17rem] transition-all duration-500 text-center' %>
+
+                <%= link_to 'Eliminar base de datos', student_path('delete_all'), class: 'inline-block py-3 px-10 bg-[#00325F] mb-2 rounded-lg hover:text-black hover:bg-white w-[17rem] transition-all duration-500 text-center', data: {
+                    turbo_method: :delete
+                } %>
+            </div>
+            <div class="">
+                <div class="mb-4">
+                    <%= search_form_for @q, class: 'grid grid-cols-1 md:grid-cols-2 gap-2 xl:grid-cols-5 items-center' do |f| %>
+                        <div class="mx-auto col-span-2 md:col-span-1">
+                            <%= f.search_field :matricula_cont, placeholder: 'Matrícula', class: 'rounded-lg border-none' %>                 
+                        </div>
+                        <div class="mx-auto col-span-2 md:col-span-1">
+                            <%= f.search_field :full_name_cont, placeholder: 'Nombres', class: 'rounded-lg border-none' %>
+                        </div>
+                        <div class="mx-auto col-span-2 md:col-span-1">
+                            <%= f.search_field :full_name_cont, placeholder: 'Apellidos', class: 'rounded-lg border-none' %>
+                        </div>
+                        <div class="mx-auto col-span-2 md:col-span-1">
+                            <%= f.select :gender, Student.pluck(:gender).uniq, { prompt: "Género" }, class: 'rounded-lg border-none w-full' %>
+                        </div>
+                        <div class="mx-auto col-span-2 xl:col-span-1">
+                            <%= f.submit 'Buscar', class: 'inline-block w-[17rem] text-white md:w-[10rem] py-3 px-10 bg-[#00325F] mb-2 rounded-lg hover:text-black hover:bg-white cursor-pointer transition-all duration-500 text-center ' %>
+                        </div>
+                    <% end %>
+                </div>
+
+                <div class="relative overflow-x-auto shadow-md rounded-lg text-center">
+                    <table class="w-full text-sm text-center text-white">
+                    <thead class="text-xs uppercase bg-[#00325F]">
+                        <tr class="border-b bg-white  border-white text-black">
+                            <th class="px-6 py-3">Matrícula</th>
+                            <th class="px-6 py-3">First Name</th>
+                            <th class="px-6 py-3">Middle Name</th>
+                            <th class="px-6 py-3">Last Name</th>
+                            <th class="px-6 py-3">Last Name Prefix</th>
+                            <th class="px-6 py-3">Gender</th>
+                            <th class="px-6 py-3">Program</th>
+                        </tr>
+                    </thead>
+                    <tbody class="">
+                        <%= turbo_frame_tag "students" do %>
+                            <% if @students.any? %>
+                                <%= render @students %>
+                            <% else %>
+                                <tr class="">
+                                    <td colspan="7" class="text-center p-5 text-2xl">
+                                        <p>
+                                        La base de datos está vacía, por favor, importe un archivo CSV.
+                                        </p>
+                                    </td>
+                                </tr>
+                            <% end %>
+                        <% end %>
+                    </tbody>
+                    </table>
+                </div>
+                    <div class="flex justify-center items-center space-x-4 p-4">
+                        <%== pagy_nav(@pagy) %>
+                    </div>
+
+                    <div class="flex justify-center items-center space-x-4 p-3">
+                        <%== pagy_info(@pagy) %>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>

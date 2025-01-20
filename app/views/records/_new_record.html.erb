@@ -1,0 +1,17 @@
+<%= form_with(model: record, html: { id: 'record-form' }, class: 'text-center grid grid-cols-1 gap-5 w-full md:w-[60%] lg:w-1/2 xl:w-1/3 mx-auto') do |f| %>
+
+  <h2 class="text-4xl font-semibold text-[#00325F]"> Ingresa tu matrícula. </h2>
+  <%= f.text_field :matricula, autocomplete: 'off', placeholder: 'Ejemplo: E19080163', class: 'text-center rounded-lg border-gray-200 text-center', required: true %>
+
+  <%= f.submit 'Capturar', class: 'inline-block py-3 px-10 bg-[#00325F] mb-2 rounded-lg hover:text-black hover:bg-white transition-all duration-500 cursor-pointer text-white' %>
+<% end %>
+
+<script>
+  document.addEventListener("turbo:submit-end", function() {
+    // Borra el valor del campo de entrada después de una captura exitosa
+    document.getElementById('record-form').reset();
+    
+    // Pone el foco en el campo de entrada nuevamente
+    document.querySelector('#record_matricula').focus();
+  });
+</script>

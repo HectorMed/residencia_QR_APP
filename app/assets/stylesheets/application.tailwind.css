@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+
+@layer components {
+  .btn-primary {
+    @apply py-2 px-4 bg-blue-200;
+  }
+}
+
+*/
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.pagy {
+  @apply flex space-x-1 font-semibold text-base text-white;
+}
+
+.pagy a:not(.gap) {
+  @apply block rounded-lg px-3 py-1 bg-white text-[#00325F];
+}
+
+.pagy a:not(.gap):hover {
+  @apply bg-[#00325F] text-white cursor-pointer transition-all duration-300;
+}
+
+.pagy a:not([href]) {
+  @apply text-[#00325F] bg-white cursor-default;
+}
+
+.pagy a.current {
+  @apply text-white bg-[#00325F];
+}
+
+.pagy label {
+  @apply inline-block whitespace-nowrap bg-white rounded-lg px-3 py-0.5 text-[#00325F];
+}
+
+.pagy label input {
+  @apply bg-white border-none rounded-md text-[#00325F];
+}

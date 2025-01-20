@@ -1,0 +1,67 @@
+<%= render 'shared/header' %>
+<div class="p-4 md:ml-0 lg:ml-64 h-screen">
+    <div class="max-w-screen-xl mx-auto w-full">
+            <div class="text-white text-center p-3 md:text-left"> 
+                <%= link_to 'Generar reporte', stats_path(format: :pdf, start_date: params[:start_date], end_date: params[:end_date], filtrar: params[:filtrar]), class: 'inline-block py-3 px-10 bg-[#00325F] mb-2 rounded-lg hover:text-black hover:bg-white transition-all duration-500 w-[14rem] text-center', target: '_blank' %>
+            </div>
+            <div class="p-3 mb-4 flex flex-col items-center md:flex-col xl:flex-row md:gap-5 md:mb-0 gap-5">
+                <%= form_tag stats_path, method: :get, class: 'text-white flex flex-col items-center md:flex-col md:items-center lg:flex-row lg:items-center justify-around p-2 w-full mx-auto gap-5' do %>
+                    <div class="mb-4 flex flex-col items-center md:flex-col xl:gap-5  md:mb-0">
+                        <%= label_tag 'Fecha de inicio' %>
+                        <%= text_field_tag 'start_date', params[:start_date], type: 'date', class: 'text-black rounded-md border-gray-200 w-[14rem] text-center' %>
+                    </div>
+                    <div class="mb-4 flex flex-col items-center md:flex-col xl:gap-5 md:mb-0">
+                        <%= label_tag 'Fecha final' %>
+                        <%= text_field_tag 'end_date', params[:end_date], type: 'date', class: 'text-black rounded-md border-gray-200 w-[14rem] text-center' %>
+                    </div>
+                    <div class="mb-2 flex flex-col items-center md:flex-col md:gap-5 md:mb-0 gap-5">
+                        <%= submit_tag 'Filtrar por fecha', class: 'inline-block py-3 px-10 bg-[#00325F] text-white rounded-lg hover:text-black hover:bg-white cursor-pointer  transition-all duration-500 w-[14rem] text-center' %>
+                        <%= link_to "Borrar Filtro", stats_path, class: 'inline-block py-3 px-10 bg-[#00325F] text-white rounded-lg hover:text-black hover:bg-white cursor-pointer mt-3 md:mt-0  transition-all duration-500 w-[14rem] text-center' %>
+                    </div>
+                <% end %>
+            </div>
+
+            <div class="grid grid-cols-1 gap-5 md:grid-cols-3 my-3 items-center text-center">
+                <div class="bg-white text-black p-3 rounded-md font-bold">
+                    <h2> Hombres </h2>
+                    <h2> <%= @filtered_records.where(gender: 'M').count %> </h2>
+                </div> 
+
+                <div class="bg-white text-black p-3 rounded-md font-bold">
+                    <h2> Mujeres </h2>
+                    <h2> <%= @filtered_records.where(gender: 'F').count %> </h2>
+                </div> 
+
+                <div class="bg-white text-black p-3 rounded-md font-bold">
+                    <h2> Acceso Total </h2>
+                    <h2> <%= @filtered_records.count %> </h2>
+                </div> 
+            </div>
+            <div class="grid grid-cols-1 gap-5 place-items-center md:grid-cols-2 lg:grid-cols-3 my-3">
+                <div class="bg-white rounded-lg p-2 w-full text-black">
+                    <%= pie_chart @pie_chart_data_m, empty: "No hay datos registrados", loading: "Cargando datos.", title: "Hombres", responsive: true, adapter: "highcharts", library: { pieSliceText: 'value-and-percentage', plotOptions: {pie: {dataLabels: {enabled: true, format: '{point.name}:
+                    {point.percentage:.1f} %',}}}} %>
+                </div>
+                <div class="bg-white rounded-lg p-2 w-full text-black">
+                    <%= pie_chart @pie_chart_data_f, empty: "No hay datos registrados", loading: "Cargando datos.", title: "Mujeres", responsive: true, adapter: "highcharts", library: { pieSliceText: 'value-and-percentage', plotOptions: {pie: {dataLabels: {enabled: true, format: '{point.name}:
+                    {point.percentage:.1f} %',}}}} %>
+                </div>
+                <div class="bg-white rounded-lg p-2 w-full text-black">
+                    <%= pie_chart @pie_chart_data_all, empty: "No hay datos registrados", loading: "Cargando datos.", title: "Acceso Total", responsive: true, adapter: "highcharts", library: { pieSliceText: 'value-and-percentage', plotOptions: {pie: {dataLabels: {enabled: true, format: '{point.name}:
+                    {point.percentage:.1f} %',}}}} %>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 gap-5 place-items-center md:grid-cols-2 lg:grid-cols-3 pb-5 lg:my-0">
+                <div class="bg-white rounded-lg p-2 w-full text-black">
+                    <%= column_chart @pie_chart_data_m, empty: "No hay datos registrados", loading: "Cargando datos.", title: "Hombres", responsive: true, adapter: "highcharts", library: { plotOptions: { column: { dataLabels: { enabled: true, format: '{point.y}', style: { color: 'black' } } } } } %>
+                </div>
+                <div class="bg-white rounded-lg p-2 w-full text-black">
+                    <%= column_chart @pie_chart_data_f, empty: "No hay datos registrados", loading: "Cargando datos.", title: "Mujeres", responsive: true, adapter: "highcharts", library: { plotOptions: { column: { dataLabels: { enabled: true, format: '{point.y}', style: { color: 'black' } } } } } %>
+                </div>
+                <div class="bg-white rounded-lg p-2 w-full text-black">
+                    <%= column_chart @pie_chart_data_all, empty: "No hay datos registrados", loading: "Cargando datos.", title: "Acceso Total", adapter: "highcharts", library: { plotOptions: { column: { dataLabels: { enabled: true, format: '{point.y}', style: { color: 'black' } } } } } %>
+                </div>
+            </div>
+    </div>
+</div>

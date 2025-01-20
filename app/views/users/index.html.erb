@@ -1,0 +1,42 @@
+<%= render 'shared/header' %>
+
+<div class="p-4 md:ml-0 lg:ml-64 h-screen">
+  <div class="max-w-screen-xl mx-auto w-full">
+    <div class="p-4 h-full">
+
+      <div class="text-white text-center md:text-right">
+        <div class="relative overflow-x-auto shadow-md rounded-lg text-center">
+          <table class="w-full text-sm text-white text-center">
+            <thead class="text-xs uppercase bg-[#00325F]">
+              <tr class="border-b bg-white border-white text-black">
+                <th class="px-6 py-3">Correo</th>
+                <th class="px-6 py-3">Nombre (s)</th>
+                <th class="px-6 py-3">Rol</th>
+                <th class="px-6 py-3">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%= turbo_frame_tag "users" do %>
+                <% if @users.any? %>
+                  <%= render @users %>
+                <% else %>
+                  <tr>
+                    <td colspan="4" class="text-center p-5 text-2xl"> <p>La base de datos de registros está vacía, por favor, capture unos cuantos registros o importe un archivo CSV. </p> </td>
+                  </tr>
+                <% end %>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="flex justify-center items-center space-x-4 p-5">
+          <%== pagy_nav(@pagy) %>
+        </div>
+        <div class="flex justify-center items-center space-x-4 p-5">
+          <%== pagy_info(@pagy) %>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

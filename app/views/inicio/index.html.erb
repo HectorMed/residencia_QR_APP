@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centro de Informacíon | ITMérida</title>
+    <link rel="stylesheet" href="Estilos1.Css">
+    <link rel="shortcut icon" href="icon.png">
+</head>
+<body>
+    <!-- /* Menu desplegable */ -->
+    <header>
+        <div class="logo">
+            <img src="icon.png" alt="">
+            <svg id="iconomenu" xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M4 6l16 0"></path>
+                <path d="M4 12l16 0"></path>
+                <path d="M4 18l16 0"></path>
+             </svg>
+        </div>
+        <nav>
+            <ul id="menu">
+                <li><%= link_to "Iniciar Sesion", new_user_session_path %></li>
+                <li><a href="#">Acerca de nosotros</a></li>
+                <li><a href="#">Preguntas frecuentes</a></li>
+                <li><a href="#">Quejas y sugerencias</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- Banner de libros -->
+    <section class="encabezado">
+        <div class="encabezado-texto">
+            <h2>Centro de información</h2>
+            <br>
+            <h3>Antonio Mediz Bolio</h3>
+            <br>
+            <p>Instituto Tecnológico de Mérida</p>
+        </div>
+    </section>
+    <!-- Anuncios -->
+    <section class="comunicacion">
+        <div class="texto">
+            <h1>Comunicación</h1>
+            <p>Noticias de la semana</p>
+        </div>
+        <div class="comunicacion-grid">
+            <article class="card">
+                <img src="ejemplo.png" alt="">
+                <h2>Titulo de la noticia</h2>
+                <p>Breve descripción</p>
+                <button id="openModalBtn">Leer más</button>
+                <button>Ver PDF</button>
+            </article>
+        </div>
+    </section>
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Este es un modal</h2>
+            <img src="ejemplo.png" alt="">
+            <img src="ejemplo.png" alt="">
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+                Ratione obcaecati laudantium deserunt omnis error quam? 
+                Vero expedita quo aliquam distinctio quod a debitis voluptate 
+                consequuntur! Temporibus fugit voluptas dolore commodi.
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+                Ratione obcaecati laudantium deserunt omnis error quam? 
+                Vero expedita quo aliquam distinctio quod a debitis voluptate 
+                consequuntur! Temporibus fugit voluptas dolore commodi.</p>
+                <img src="ejemplo.png" alt="">
+        </div>
+    </div>
+    <!-- Acerca de nosotros -->
+    <section class="nosotros">
+        <div class="texto">
+            <h1>Acerca de nostros</h1>
+            <div class="about-us">
+                <div class="teammate">
+                    <div class="profile-photo">
+                        <img src="https://img.icons8.com/?size=100&id=65210&format=png&color=000000"/>
+                    </div>
+                    <div class="info">
+                    <h1 class="link-light">Misión</h1>
+                    <br>
+                    <p>El Centro de Información Antonio Médiz Bolio del Instituto Tecnológico de Mérida tiene un acervo de 21,282 títulos impresos, suscripción a 3 bibliotecas digitales, tesis en físico, tesis en el Repositorio Institucional y revistas. Contamos con estantería abierta, préstamo externo e interno, catálogo automatizado (SIABUC), cubículos de estudio individual y grupal, sala general de lectura, acervo general, acervo de consulta y computadoras para consulta.</p>
+                    </div>
+                </div>
+                <div class="teammate reverse">
+                    <div class="profile-photo">
+                        <img src="https://img.icons8.com/?size=100&id=Tq4gkzFaA5H6&format=png&color=000000"/>
+                    </div>
+                    <div class="info">
+                        <h1 class="link-light">Visión</h1>
+                        <br>
+                        <p>Unidades orgánicas del Sistema Nacional de Institutos Tecnológicos de amplia repercusión académica con recursos documentales y servicios de información, para impulsar la docencia, investigación, vinculación y cultura; tecnología de vanguardia, ambiente óptimo, personal capacitado, con actitud de servicio, inmersas en un proceso de mejora continua y equidad, acorde al modelo educativo vigente.</p>
+                    </div>
+                </div>
+                <div class="teammate">
+                    <div class="profile-photo">
+                        <img src="https://img.icons8.com/?size=100&id=65345&format=png&color=000000"/>
+                    </div>
+                    <div class="info">
+                    <h1 class="link-light">Objetivo</h1>
+                    <br>
+                    <p>Fortalecer los procesos de docencia, investigación, vinculación y difusión de la cultura en la comunidad tecnológica, mediante la prestación de servicios bibliotecarios.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Preguntas frecuentes -->
+    <section class="preguntas">
+        <div class="frecuentes">
+            <h1>Preguntas frecuentes</h1>
+            <div class="accordion-item">
+                <div class="accordion-title">
+                    <div class="icon-container">
+                        <span class="icon icon-plus">+</span>
+                        <span class="icon icon-minus">-</span>
+                    </div>
+                    Horarios
+                </div>
+                <div class="accordion-content">
+                    <p>Lunes a Viernes 8:00am a 20:00pm</p>
+                </div>
+                <div class="accordion-title">
+                    <div class="icon-container">
+                        <span class="icon icon-plus">+</span>
+                        <span class="icon icon-minus">-</span>
+                    </div>
+                    Reglamento
+                </div>
+                <div class="accordion-content">
+                    <li>Todo usuario deberá depositar su mochila y/o portafolios en paqueteria antes de ingresar a la sala</li>
+                    <br>
+                    <li>Prohibido el ingreso de alimentos o bebidas al Centro de información</li>
+                    <br>
+                    <li>Los usuarios deberán dirigirse con respeto al personal y estudiantes</li>
+                    <br>
+                    <li>Evitar maltratar, mutilar, rayar los libros y/o equipos y materiales del Centro de Información</li>
+                    <br>
+                    <li>Depositar los libros en los carros transportadores</li>
+                    <br>
+                    <li>Evitar recibir y/o hacer llamadas telefonicas dentro de las salas de consulta, estudio o cubículos</li>
+                    <br>
+                    <li>Dentro del Centro de Información se debe actuar con ética y responsabilidad evitando las muestras de cariño</li>
+                    <br>
+                    <li>En caso de interrupción de energía eléctrica el usurario deberá abandonar el Centro de Información en el momento indicado por el personal</li>
+                    <br>
+                    <p><b>En caso de violación de cualquier lineamiento de este reclamento se aplicará una sanción establecida por el Centro de Información</b></p>
+                </div>
+                <div class="accordion-title">
+                    <div class="icon-container">
+                        <span class="icon icon-plus">+</span>
+                        <span class="icon icon-minus">-</span>
+                    </div>
+                    Servicios
+                </div>
+                <div class="accordion-content">
+                        <li>Consulta bibliográfica en sala</li>
+                        <li>Paqueteriía</li>
+                        <li>Préstamo de libros a domicilio y cd de libros impresos</li>
+                        <li>Fotocopiado</li>
+                        <li>Prestamo de computadoras</li>
+                        <li>Cubiculos de estudio en grupo</li>
+                        <li>Biblioteca virtual</li>
+                        <li>Consulta de revistas cientifico-tecnologicas</li>
+                        <li>Consulta de trabajos de titulación (formato electronico o impreso)</li>
+                        <li>Cubiculos para lectura en voz</li>
+                        <li>Platicas de introducción</li>
+                        <li>Curso taller de formación de usuarios</li>
+                </div>
+                <div class="accordion-title">
+                    <div class="icon-container">
+                        <span class="icon icon-plus">+</span>
+                        <span class="icon icon-minus">-</span>
+                    </div>
+                    Préstamo de material Bibliográfico
+                </div>
+                <div class="accordion-content">
+                    <li>El préstamo de libros será de tres días habiles por libro, contando el día en que fue prestado</li>
+                    <br>
+                    <li>Los libros deberán ser devueltos en las fechas señaladas por el último sello marcado en la papeleta del libro</li>
+                    <br>
+                    <li>Al momento de la devolución el usuario deberá pasar el libro, las revistas y/o equipo y material préstado módulo correspondiente</li>
+                </div>
+                <div class="accordion-title">
+                    <div class="icon-container">
+                        <span class="icon icon-plus">+</span>
+                        <span class="icon icon-minus">-</span>
+                    </div>
+                    Perdida de material
+                </div>
+                <div class="accordion-content">
+                    <p>El usuario que extravíe un libro deberá de:</p>
+                    <br>
+                    <li>Comunicar la pérdida de la obra a la brevedad posible al área de servicios de atención a usarios</li>
+                    <br>
+                    <li>Deberá reponer con una obra igual última edición, en un término de quince días</li>
+                    <br>
+                    <li>Cuando no se devuelva el material bibliográfico al término del semestre, el alumno no se podrá reinscribir en el siguiente semestre, hasta aclarar su situación</li>
+                </div>
+                <div class="accordion-title">
+                    <div class="icon-container">
+                        <span class="icon icon-plus">+</span>
+                        <span class="icon icon-minus">-</span>
+                    </div>
+                    Cubiculos de estudio grupal
+                </div>
+                <div class="accordion-content">
+                        <p>El prestamo de cubiculo es por un máximo de 2hrs con un minimo de cinco estudiantes</p>
+                </div>
+                <div class="accordion-title">
+                    <div class="icon-container">
+                        <span class="icon icon-plus">+</span>
+                        <span class="icon icon-minus">-</span>
+                    </div>
+                    Centro de cómputo
+                </div>
+                <div class="accordion-content">
+                        <p>El préstamo de computadoras es por 2hrs máximo</p>
+                        <p>El préstamo es individual</p>
+                </div>
+                <div class="accordion-title">
+                    <div class="icon-container">
+                        <span class="icon icon-plus">+</span>
+                        <span class="icon icon-minus">-</span>
+                    </div>
+                    Para tener derecho a los servicios del Centro de Información
+                </div>
+                <div class="accordion-content">
+                    <li><b>Alumnos de nuevo ingreso</b></li>
+                        <p>Registrarse en el Centro de Información presentando su carga académica, identificación, identificación personal INE</p>
+                    <br>
+                        <li><b>Alumos de segundo semestre en adelante</b></li>
+                        <p><u>Deberan actualizar sus datos</u></p>
+                        <p>Acudir al Centro de Información los primeros trenta días habiles de inicio de semestre a partir de 2° semestre y hasta la conclusión de su carrera debiendo presentar su comprobante de pago de reinscripción o carga académica y credencial de la escuela</p>
+                </div>
+                <div class="accordion-title">
+                    <div class="icon-container">
+                        <span class="icon icon-plus">+</span>
+                        <span class="icon icon-minus">-</span>
+                    </div>
+                    Hoja de no Adeudo (titulación)
+                </div>
+                <div class="accordion-content">
+                    <img src="hoja_no_adeudo.png" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Quejas -->
+    <section>
+        <div class="texto">
+            <h1>Buzon de quejas y sugerencias</h1>
+            <br>
+            <p>¡Tu opinión es importante para nosotros!</p>
+            <br>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSerpTwKQLzeQbkAdBKecEiIfVAraTL5YfBd3uezDzk5uJIutQ/viewform">
+            <img src="buzon_sugerencias_ci.jpg"></a>
+        </div>
+    </section>
+    <!-- Pie de pagina -->
+    <footer>
+        <div class="content">
+            <div class="row">
+                <div class="footer mapa">
+                    <h1>Ubicación</h1>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d465.5622057807162!2d-89.62403864034074!3d21.012764934701618!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f567700575bba91%3A0xea11353951ce8624!2sBiblioteca%20Antonio%20Mediz%20Bolio!5e0!3m2!1sen!2smx!4v1727048382766!5m2!1sen!2smx" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div class="footer directorio">
+                    <h1><b>Directorio</b></h1>
+                    <li>Telefono (999)-9645000</li>
+                    <li>Ext. 41601</li>
+                    <br/>
+                    <h1>¡Síguenos en nuestras redes sociales!</h1>
+                    <img src="fb.png" height="100" width="100">
+                    <img src="yt.png" height="100" width="100">
+                </div>
+                <div class="footer contacto">
+                    <h1>Contactos</h1>
+                    <p><b>Luisa Gisell Pat Reyes</b></p>
+                    <p>Centro de Información</p>
+                    <p>ci_merida@tecnm.mx</p>
+                    <br/>
+                    <p><b>Marina Inés Villanueva Rosado</b></p>
+                    <p>Jefa Oficina Servicio a Usuarios</p>
+                    <p>marina.vr@merida.tecnm.mx</p>
+                    <br/>
+                    <p><b>Alejandra Mariely Negroe Cetina</b></p>
+                    <p>Oficina Organización Bibliográfica</p>
+                    <p>alejandra.nc@merida.tecnm.mx</p>
+                    <br/>
+                    <p><b>Yasmín Yanet Aldana Medina</b></p>
+                    <p>Oficina Servicios Especializados</p>
+                    <p>yasmin.am@merida.tecnm.mx</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Java Script -->
+    <script
+        src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous">
+    </script>
+    <script> //hace posible que el menu se oculte
+        $("#iconomenu").click(function(){
+            $("#menu").slideToggle();
+        });
+    </script>
+    <script> //Modal -> despliga más información
+        var modal = document.getElementById("myModal");
+        var btn = document.getElementById("openModalBtn");
+        var span = document.getElementsByClassName("close")[0];
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+    <script> //hace funcionar el acordeon
+        $(document).ready(function () {
+            $('.accordion-title').click(function () {
+                var icon = $(this).find('.icon');
+                var content = $(this).next('.accordion-content');
+                content.slideToggle('fast', function () {
+                    $(this).prev('.accordion-title').toggleClass('active', $(this).is(':visible'));
+                });
+                $('.accordion-title').not(this).removeClass('active')
+                    .find('.icon').text('+')
+                    .end().next('.accordion-content').slideUp('fast');
+            });
+        });
+    </script>
+</body>
+</html>

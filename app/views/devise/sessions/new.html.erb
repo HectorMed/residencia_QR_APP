@@ -1,0 +1,86 @@
+<section class="cont">
+    <div class="box m-2">
+      <div class="inner-box">
+        <div class="forms-wrap">
+        <%= form_with(url: new_user_session_path, class: 'sign-in-form form-style') do |f| %>
+            <div class="heading centrar">
+              <h2 class="mostrar">Iniciar Sesión</h2>
+            </div>
+            <div class="actual-form">
+                <div class="input-wrap">
+                    <%= f.text_field :login, required: false,  autocomplete: 'off', class: 'input-field border-transparent focus:border-transparent focus:ring-0' %>
+                    <%= f.label 'Usuario o Correo', class: 'labels-field' %>
+                </div>
+
+                <div class="input-wrap">
+                    <%= f.password_field :password, required: false,  autocomplete: 'off', class: 'input-field border-transparent focus:border-transparent focus:ring-0' %>
+                    <%= f.label 'Contraseña', class: 'labels-field' %>
+                </div>
+
+                <%= f.submit 'Iniciar Sesión', class: 'sign-btn' %>
+                <%= render "devise/shared/links" %>
+
+                <p class="text mostrar">
+                    ¿No tienes cuenta?
+                    <span class="toggle cursor-pointer">Registrarse</span>
+                </p>
+            </div>
+          <% end %>
+
+          <%= form_with(model: @user, class: 'sign-up-form form-style') do |f| %>
+            <div class="heading centrar">
+              <h2 class="mostrar">Registrarse</h2>
+            </div>
+            <div class="actual-form">
+                <div class="input-wrap">
+                    <%= f.email_field :email, required: true,  autocomplete: 'off', class: 'input-field border-transparent focus:border-transparent focus:ring-0' %>
+                    <%= f.label 'Correo Electronico', class: 'labels-field' %>
+                </div>
+
+                <div class="input-wrap">
+                    <%= f.text_field :username, required: true,  autocomplete: 'off', class: 'input-field border-transparent focus:border-transparent focus:ring-0' %>
+                    <%= f.label 'Nombre', class: 'labels-field' %>
+                </div>
+
+                <div class="input-wrap">
+                    <%= f.password_field :password, required: true,  autocomplete: 'off', class: 'input-field border-transparent focus:border-transparent focus:ring-0' %>
+                    <%= f.label 'Contraseña', class: 'labels-field' %>
+                </div>
+
+                <%= f.submit 'Registrarse', class: 'sign-btn' %>
+
+                <p class="text mostrar">
+                    ¿Ya tienes cuenta?
+                    <span class="toggle cursor-pointer">Iniciar Sesion</span>
+                </p>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="carousel">
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+        const inputs = document.querySelectorAll(".input-field");
+        const toggle_btn = document.querySelectorAll(".toggle");
+        const main = document.querySelector(".cont");
+        
+        inputs.forEach((inp) => {
+        inp.addEventListener("focus", () => {
+            inp.classList.add("active");
+        });
+        inp.addEventListener("blur", () => {
+            if (inp.value != "") return;
+            inp.classList.remove("active");
+        });
+        });
+
+        toggle_btn.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            main.classList.toggle("sign-up-mode");
+        });
+        });
+  </script>

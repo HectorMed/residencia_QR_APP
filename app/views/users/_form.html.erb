@@ -1,0 +1,21 @@
+<%= render 'shared/header' %>
+
+<div class="p-4 md:ml-0 lg:ml-64 h-[100vh] text-">
+    <div class="p-4 h-full flex items-center justify-center ">
+            <%= form_with(model: @user, class: 'grid grid-cols-1 gap-5 w-full  text-center md:w-[40%]') do |f| %> 
+                    <%= f.label 'Correo Electronico', class: 'font-bold text-[#00325F] text-lg' %>
+                    <%= f.email_field :email, class: 'inline-block text-center rounded-md border border-gray-200 outline-none px-3 mb-2 py-3 lg:mb-0 text-black', autocomplete: 'off' %> 
+                    <%= f.label 'Nombre de usuario', class: 'font-bold text-[#00325F] text-lg' %>
+                    <%= f.text_field :username, class: 'inline-block text-center rounded-md border border-gray-200 outline-none px-3 mb-2 py-3 lg:mb-0 text-black', autocomplete: 'off' %>
+                    <%= f.label 'Rol', class: 'font-bold text-[#00325F] text-lg' %> 
+                    
+                    <div class="border border-black flex gap-2 justify-center items-center inline-block text-center rounded-md border border-gray-200 outline-none px-3 mb-2 py-3 lg:mb-0 text-black">
+                        <%= f.collection_check_boxes :role_ids, Role.all, :id, :name %>
+                    </div>
+
+                    <%= f.submit 'Actualizar datos', class: 'inline-block py-3 px-10 bg-[#00325F] text-white rounded-lg hover:text-black hover:bg-white cursor-pointer transition-all duration-500' %>
+                    <%= link_to 'Atras', users_path, class: 'inline-block py-3 px-10 bg-[#00325F] text-white rounded-lg hover:text-black hover:bg-white cursor-pointer transition-all duration-500' %>
+            <% end %>            
+        </div>
+    </div> 
+</div>

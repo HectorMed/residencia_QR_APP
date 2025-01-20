@@ -1,0 +1,84 @@
+<%= render 'shared/header' %>
+
+<div class="p-4 md:ml-0 lg:ml-64 h-screen ">
+  <div class="max-w-screen-xl mx-auto w-full ">
+    <div class="p-4 h-full ">
+            <div class="text-white text-center p-3 md:text-right">     
+            <%= form_with url: import_records_path ,multipart: true, class: 'overflow-hidden' do |form| %>
+                <%= form.file_field :file, class: 'mb-2' %>
+                <%= form.submit 'Subir CSV', class: 'inline-block py-3 w-[15rem] sm:w-[10rem] px-10 bg-[#00325F] mb-2 rounded-lg hover:text-black hover:bg-white cursor-pointer transition-all duration-500' %>
+            <% end %>
+
+            <%= link_to 'Exportar a CSV', records_path(request.parameters.merge({format: :csv})), class: 'inline-block py-3 px-10 bg-[#00325F] mb-2 rounded-lg hover:text-black hover:bg-white transition-all duration-500 w-[15rem] text-center' %>
+        </div>
+
+      <div class="mb-4">
+        <%= search_form_for @q, class: 'grid grid-cols-1 md:grid-cols-2 gap-4 xl:grid-cols-4 items-center' do |f| %>
+
+          <div class="mx-auto col-span-2 md:col-span-1 lg:col-span-2 text-center">
+            <%= f.label :created_at_gteq, 'Inicio:', class: 'block text-gray-700' %>
+            <%= f.date_field :created_at_gteq, class: 'rounded-lg border-none w-full' %>
+          </div>
+          <div class="mx-auto col-span-2 md:col-span-1 lg:col-span-2 text-center">
+            <%= f.label :created_at_lteq, 'Final:', class: 'block text-gray-700' %>
+            <%= f.date_field :created_at_lteq, class: 'rounded-lg border-none w-full' %>
+          </div>
+
+          <div class="mx-auto col-span-2 md:col-span-1">
+            <%= f.search_field :matricula_cont, placeholder: 'Matrícula', class: 'rounded-lg border-none' %>
+          </div>
+          <div class="mx-auto col-span-2 md:col-span-1">
+            <%= f.search_field :full_name_cont, placeholder: 'Nombres', class: 'rounded-lg border-none' %>
+          </div>
+          <div class="mx-auto col-span-2 md:col-span-1">
+            <%= f.search_field :full_name_cont, placeholder: 'Apellidos', class: 'rounded-lg border-none' %>
+          </div>
+          <div class="mx-auto col-span-2 md:col-span-1">
+            <%= f.select :gender, Student.pluck(:gender).uniq, { prompt: "Género" }, class: 'rounded-lg border-none w-full' %>
+          </div>
+
+          <div class="mx-auto col-span-2 xl:col-span-4">
+            <%= f.submit 'Buscar', class: 'inline-block w-[17rem] text-white w-[10rem] py-3 px-10 bg-[#00325F] mb-2 rounded-lg hover:text-black hover:bg-white cursor-pointer transition-all duration-500 text-center' %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="text-white text-center md:text-right">
+        <div class="relative overflow-x-auto shadow-md rounded-lg text-center">
+          <table class="w-full text-sm text-white text-center">
+            <thead class="text-xs uppercase bg-[#00325F]">
+              <tr class="border-b bg-white border-white text-black">
+                <th class="px-6 py-3">Matricula</th>
+                <th class="px-6 py-3">Primer Nombre</th>
+                <th class="px-6 py-3">Segundo Nombre</th>
+                <th class="px-6 py-3">Primer Apellido</th>
+                <th class="px-6 py-3">Segundo Apellido</th>
+                <th class="px-6 py-3">Género</th>
+                <th class="px-6 py-3">Programa</th>
+                <th class="px-6 py-3">Fecha y Hora</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%= turbo_frame_tag "records" do %>
+                <% if @records.any? %>
+                  <%= render @records %>
+                <% else %>
+                  <tr>
+                    <td colspan="8" class="text-center p-5 text-2xl"> <p>La base de datos de registros está vacía, por favor, capture unos cuantos registros o importe un archivo CSV. </p> </td>
+                  </tr>
+                <% end %>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="flex justify-center items-center space-x-4 p-5">
+          <%== pagy_nav(@pagy) %>
+        </div>
+        <div class="flex justify-center items-center space-x-4 p-5">
+          <%== pagy_info(@pagy) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

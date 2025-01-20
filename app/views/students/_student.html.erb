@@ -1,0 +1,13 @@
+<tr>
+    <%= turbo_frame_tag student do %>
+        <tr class="border-b bg-[#00325F] border-white transition-all  hover:bg-white hover:text-black hover:duration-700">
+            <td class="px-6 py-3"> <%= student.matricula %> </td>
+            <td class="px-6 py-3"> <%= student.first_name %> </td>
+            <td class="px-6 py-3"> <%= student.middle_name %> </td>
+            <td class="px-6 py-3"> <%= student.last_name %> </td>
+            <td class="px-6 py-3"> <%= student.last_name_prefix %> </td>
+            <td class="px-6 py-3"> <%= student.gender %> </td>
+            <td > <%= student.program %> </td>
+        </tr>
+    <% end %>
+</tr>

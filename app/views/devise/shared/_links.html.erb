@@ -1,0 +1,26 @@
+<%- if controller_name != 'sessions' %>
+  <p><%= link_to "Log in", new_session_path(resource_name) %></p>
+<% end %>
+
+<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+  <p><%= link_to "Registrarse", new_registration_path(resource_name), class: 'sign-btn text-center py-3' %></p>
+<% end %>
+
+<%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+  <p><%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %></p>
+<% end %>
+
+<%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
+  <p><%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %></p>
+<% end %>
+
+<%- if devise_mapping.omniauthable? %>
+  <%- resource_class.omniauth_providers.each do |provider| %>
+    <%#= button_to "Iniciar Sesion #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, pr1o1vider), data: { turbo: false } %>
+      <%= button_to omniauth_authorize_path(resource_name, provider), class: 'transition-all duration-300 bg-slate-900 p-3 rounded-md flex items-center text-white hover:bg-slate-600 hover:cursor-pointer', data: { turbo: false } do %>
+        <%= image_tag "microsoft.svg", width: 30, class: 'mr-2' %>
+        <span>Microsoft (merida.tecnm.mx)</span>
+      <% end %>
+
+  <% end %>
+<% end %>

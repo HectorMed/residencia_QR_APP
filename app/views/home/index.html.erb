@@ -1,0 +1,51 @@
+<%= render "shared/header" %>
+
+<div class="p-4 md:ml-0 lg:ml-64 h-screen">
+    <div class="max-w-screen-xl mx-auto w-full h-full">
+        <% if current_user.has_role?(:institutional) %>
+            <h2 class="text-center pb-3 text-2xl font-bold">
+                Tarjeta de estudiante
+            </h2>
+        <% end %>
+        <div class="h-full w-full flex items-center justify-center">
+            <% if current_user.has_role?(:institutional) %>
+                <div class="mx-auto rounded-xl w-[95%] md:w-96 h-[40rem] bg-white flex flex-col overflow-hidden text-center"> 
+                    <% if current_user.has_role?(:institutional) %> 
+                        <p class="pt-2"> Cuenta institucional </p>
+                    <% end %>
+                    <%# contenedor de imagen %>
+                    <div class="mx-auto w-36 p-4">
+                        <%= image_tag 'user-icon.png', class: '' %>
+                    </div>
+
+                    <%# contenedor de nombre y correo %>
+
+                    <div class="text-center p-4">
+                        <h2 class="pb-2 font-bold text-2xl">
+                            <%= current_user.username %>
+                        </h2>
+                        <p class="pt-2">
+                            <%= current_user.email %>
+                        </p>
+                    </div>
+
+                    <%# linea divisora %>
+                    <hr class="mx-auto mt-4 mb-4 w-4/5">
+
+                    <%# contenedor del codigo qr %>
+                    <div class="w-4/5 p-4 rounded-lg mx-auto flex-grow">
+
+                        <p class="text-center">Escanea el codigo QR para capturar tus datos.</p>
+
+                        <% qr_code_base64 = Base64.encode64(@qr_code.to_s) %>
+                        <img class="w-[90%] rounded-lg mx-auto" src="data:image/png;base64,<%= qr_code_base64 %>" alt="QR Code">
+                    </div>
+
+                </div>
+            <% else %>
+                <div class="flex items-center justify-center h-full max-w-screen-xl mx-auto w-full">
+                    <%= image_tag 'icon.png' %>
+                </div>
+            <% end %>
+    </div>
+</div>

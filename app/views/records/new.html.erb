@@ -1,0 +1,15 @@
+<div class="h-screen">
+    <div class="p-4 h-full flex flex-col items-center gap-28">
+        <div class="flex items-center justify-between h-48 w-full rounded-md bg-white max-w-7xl mx-auto"> 
+            <figure class="h-24 md:h-40"> <%= image_tag 'tecnm.png', class: 'w-full h-full' %>  </figure> 
+            <figure class="h-24 md:h-40"> <%= image_tag 'icon.png', class: 'w-full h-full' %>  </figure>
+            <figure class="h-24 md:h-40"> <%= image_tag '75_ann.jpeg', class: 'w-full h-full' %>  </figure>
+        </div>
+        <div class="w-full p-4">
+            <%= turbo_frame_tag 'records' do %>
+                <%= render 'new_record', record: @record %>
+            <% end %>
+        </div>
+        <%= link_to "Regresar al inicio", home_index_path, class: 'inline-block py-3 px-10 bg-[#00325F] mb-2 rounded-lg text-white hover:text-black hover:bg-white transition-all duration-500 w-[14rem] text-center ml-auto mt-auto' %>
+    </div>
+</div>
